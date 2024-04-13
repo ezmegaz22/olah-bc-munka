@@ -27,16 +27,3 @@ export const getUserReview = (reviews, userId) => {
 
   return userReview;
 };
-//
-export const getCookiesName = () => {
-  let cookieNames = "";
-
-  if (process.env.NODE_ENV === "development") {
-    cookieNames = "next-auth.session-token";
-  }
-
-  if (process.env.NODE_ENV === "production") {
-    cookieNames = "__Secure-next-auth.session-token";
-  }
-  return cookieNames;
-};

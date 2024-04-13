@@ -3,18 +3,15 @@ import axios from "axios";
 import React from "react";
 
 import { cookies } from "next/headers";
-import { getCookiesName } from "@/helpers/helpers";
 
 const getAddresses = async () => {
   const nextCookies = cookies();
-  const cookieName = getCookiesName(); //vercel
-  const nextAuthSessionToken = nextCookies.get(cookieName);
-  //const nextAuthSessionToken = nextCookies.get("next-auth.session-token");
+
+  const nextAuthSessionToken = nextCookies.get("next-auth.session-token");
 
   const { data } = await axios.get(`${process.env.API_URL}/api/address`, {
     headers: {
-      Cookie: `${nextAuthSessionToken?.name}=${nextAuthSessionToken?.value}`,
-      //Cookie: `next-auth.session-token=${nextAuthSessionToken?.value}`,
+      Cookie: `next-auth.session-token=${nextAuthSessionToken?.value}`,
     },
   });
 

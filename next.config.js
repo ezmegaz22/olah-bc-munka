@@ -5,7 +5,7 @@ const nextConfig = {
   },
   env: {
     API_URL: "https://bakalarolah-jozvuwt7c-gejza-olahs-projects.vercel.app", 
-    //API_URL:"https://olah-bc-munka-4nlyu3b1v-gejza-olahs-projects.vercel.app",
+    //API_URL:"http://localhost:3000",
     //DB_LOCAL_URI: "mongodb://localhost:27017/olahbakalar",
     DB_URI: "mongodb+srv://olahgeza:Olahocska2@olahbakalar.yv2udmt.mongodb.net/?retryWrites=true&w=majority&appName=olahbakalar", //console mongodb csatlakozas
 

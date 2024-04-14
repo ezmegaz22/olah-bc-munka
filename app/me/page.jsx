@@ -20,9 +20,16 @@ const getAddresses = async () => {
 };
 
 const ProfilePage = async () => {
-  const addresses = await getAddresses();
+  try {
+    const addresses = await getAddresses();
+    console.log("Fetched addresses:", addresses); // Log fetched addresses
 
-  return <Profile addresses={addresses} />;
+    return <Profile addresses={addresses} />;
+  } catch (error) {
+    console.error("Error fetching addresses:", error);
+    // Handle error gracefully, e.g., display an error message
+    return <div>Error fetching addresses. Please try again later.</div>;
+  }
 };
 
 export default ProfilePage;

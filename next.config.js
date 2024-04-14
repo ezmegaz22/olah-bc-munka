@@ -9,7 +9,7 @@ const nextConfig = {
     //DB_LOCAL_URI: "mongodb://localhost:27017/olahbakalar",
     DB_URI: "mongodb+srv://olahgeza:Olahocska2@olahbakalar.yv2udmt.mongodb.net/?retryWrites=true&w=majority&appName=olahbakalar", //console mongodb csatlakozas
 
-    //NEXTAUTH_URL: "https://olah-bc-munka-4h01ggtyk-gejza-olahs-projects.vercel.app",
+    NEXTAUTH_URL: "https://bcmunka01-git-main-gejza-olahs-projects.vercel.app", // api url egyformanak kell lennie maskepp nincs authorize 
 
     CLOUD_NAME: "dsurojky9",
     CLOUDINARY_API_KEY: "731659276394317",

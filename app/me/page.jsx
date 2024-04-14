@@ -15,7 +15,7 @@ const getAddresses = async () => {
       Cookie: `${nextAuthSessionToken?.name}=${nextAuthSessionToken?.value}`,
     },
   });
-
+  console.log("session", nextAuthSessionToken);
   return data?.addresses;
 };
 

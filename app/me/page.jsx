@@ -6,14 +6,16 @@ import { cookies } from "next/headers";
 import { getCookieName } from "@/helpers/helpers";
 
 const getAddresses = async () => {
-  // const nextCookies = cookies();
-  // const cookieName = getCookieName();
-  // const nextAuthSessionToken = nextCookies.get(cookieName);
-  // console.log("sessiontoken", nextAuthSessionToken);
-  // console.log("api_url", process.env.API_URL);
+  const nextCookies = cookies();
+  const cookieName = getCookieName();
+  const nextAuthSessionToken = nextCookies.get(cookieName);
+  console.log("sessiontoken", nextAuthSessionToken);
+  console.log("api_url", process.env.API_URL);
 
   const { data } = await axios.get(`${process.env.API_URL}/api/address`, {
-    withCredentials: true, // Ensure cookies are sent with the request
+    headers: {
+      Cookie: `${nextAuthSessionToken?.name}=${nextAuthSessionToken?.value}`,
+    },
   });
 
   return data?.addresses;

@@ -10,6 +10,7 @@ const nextConfig = {
     DB_URI: "mongodb+srv://olahgeza:Olahocska2@olahbakalar.yv2udmt.mongodb.net/?retryWrites=true&w=majority&appName=olahbakalar", //console mongodb csatlakozas
 
     NEXTAUTH_URL: "https://bcmunka01.vercel.app", // api url egyformanak kell lennie maskepp nincs authorize 
+    NODE_ENV: "production",
 
     CLOUD_NAME: "dsurojky9",
     CLOUDINARY_API_KEY: "731659276394317",

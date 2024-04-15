@@ -3,6 +3,7 @@
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { createContext, useState } from "react";
+import { cookies } from "next/headers";
 
 const AuthContext = createContext();
 
@@ -49,6 +50,9 @@ export const AuthProvider = ({ children }) => {
   };
 
   const updateProfile = async (formData) => {
+  const nextCookies = cookies();
+  const cookieName = getCookieName();
+  const nextAuthSessionToken = nextCookies.get(cookieName);
     try {
       setLoading(true);
 
@@ -57,6 +61,7 @@ export const AuthProvider = ({ children }) => {
         formData,
         {
           headers: {
+            Cookie: `${nextAuthSessionToken?.name}=${nextAuthSessionToken?.value}`,
             "Content-Type": "multipart/form-data",
           },
         }

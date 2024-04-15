@@ -14,7 +14,7 @@ const getAddresses = async () => {
 
   const { data } = await axios.get(`${process.env.API_URL}/api/address`, {
     headers: {
-      Cookie: `${nextAuthSessionToken?.name}=${nextAuthSessionToken?.value}`,
+      Cookie: `${cookieName}=${nextAuthSessionToken}`,
     },
   });
 

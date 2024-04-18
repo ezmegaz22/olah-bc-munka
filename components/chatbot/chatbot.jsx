@@ -12,17 +12,26 @@ const Chatbot = () => {
   const [inputText, setInputText] = useState("");
   const [hasOpenedBefore, setHasOpenedBefore] = useState(false);
   const [isMinimized, setIsMinimized] = useState(false);
+  const [currentStep, setCurrentStep] = useState(0);
+
+  const steps = [
+    {
+      text: "Üdvözöllek! Egy chatbot vagyok, termékek keresésében tudok segíteni!",
+      isBot: true,
+    },
+    {
+      text: "Írd be a következőt: Kategória ",
+      isBot: true,
+    },
+  ];
 
   const handleOpenChat = () => {
     setIsOpen(true);
     if (!hasOpenedBefore) {
-      const welcomeMessage = {
-        text: "Üdvözöllek! Egy chatbot vagyok, termékek lekérdezésében tudok segíteni! Pl: apple",
-        isBot: true,
-      };
-      setMessages([welcomeMessage]);
-      saveMessagesToLocalStorage([welcomeMessage]);
+      setMessages([...messages, steps[0], steps[1]]);
+      saveMessagesToLocalStorage([...messages, steps[0], steps[1]]);
       setHasOpenedBefore(true);
+      setCurrentStep(1);
     }
   };
 
@@ -54,24 +63,80 @@ const Chatbot = () => {
 
     let responseMessage;
 
-    if (inputText.toLowerCase().includes("apple")) {
-      responseMessage = {
-        text: "Az alábbi Apple telefon található a weboldalon: iPhone 15, fekete színben, 1455 euróért.",
-        isBot: true,
-      };
-    } else if (inputText.toLowerCase().includes("samsung")) {
-      responseMessage = {
-        text: "Sajnálom, ilyen termék nincs a weboldalon!",
-        isBot: true,
-      };
-    } else if (inputText.toLowerCase().includes("csoka diana")) {
-      responseMessage = {
-        text: "Olah Geza nagyon szereti Csoka Dianat, mint a szeme fényét!",
-        isBot: true,
-      };
+    if (currentStep === 1) {
+      if (inputText.toLowerCase().includes("kategória")) {
+        responseMessage = {
+          text: "Válassz kategóriát: Monitor, Telefon, vagy Laptop!",
+          isBot: true,
+        };
+        setCurrentStep(2);
+      } else {
+        responseMessage = {
+          text: "Ez nem egy érvényes parancs. Kérlek, írd be: Kategória",
+          isBot: true,
+        };
+      }
+    } else if (currentStep === 2) {
+      const category = inputText.toLowerCase();
+      if (category.includes("monitor")) {
+        responseMessage = {
+          text: "Monitor kategória: Acer, Samsung, LG",
+          isBot: true,
+        };
+      } else if (category.includes("telefon")) {
+        responseMessage = {
+          text: "Telefon kategória: iPhone, Samsung, Huawei",
+          isBot: true,
+        };
+      } else if (category.includes("laptop")) {
+        responseMessage = {
+          text: "Laptop kategória: Dell, HP, Asus",
+          isBot: true,
+        };
+      } else {
+        responseMessage = {
+          text: "Ez a kategória nem érvényes. Válassz: Monitor, Telefon, vagy Laptop",
+          isBot: true,
+        };
+      }
+      setCurrentStep(3); // Kategóriaválasztás után a következő lépés
+    } else if (currentStep === 3) {
+      // Ellenőrizzük, hogy a felhasználó választott-e már kategóriát
+      if (
+        messages[messages.length - 1].isBot &&
+        messages[messages.length - 1].text.includes("kategória")
+      ) {
+        const selectedBrand = inputText.toLowerCase();
+        if (selectedBrand.includes("dell")) {
+          responseMessage = {
+            text: "Dell x2 244 Hz monitor található, 245 euróért, jelenleg 4 db van a raktáron!",
+            isBot: true,
+          };
+        } else if (selectedBrand.includes("hp")) {
+          responseMessage = {
+            text: "HP laptopok: HP Envy, HP Pavilion, HP Spectre",
+            isBot: true,
+          };
+        } else if (selectedBrand.includes("asus")) {
+          responseMessage = {
+            text: "Asus laptopok: Asus ZenBook, Asus ROG, Asus VivoBook",
+            isBot: true,
+          };
+        } else {
+          responseMessage = {
+            text: `Sajnálom, a "${selectedBrand}" nem található a kategóriában.`,
+            isBot: true,
+          };
+        }
+      } else {
+        responseMessage = {
+          text: "Kérlek, először válassz kategóriát: Monitor, Telefon, vagy Laptop!",
+          isBot: true,
+        };
+      }
     } else {
       responseMessage = {
-        text: "Sajnálom, nem értem mit szeretnél. Kérlek, próbáld újra!",
+        text: "Kérlek, használd a chatbotot a fenti utasítások szerint.",
         isBot: true,
       };
     }
@@ -97,13 +162,13 @@ const Chatbot = () => {
     localStorage.removeItem("chatMessages");
     setMessages([]);
 
-    // Újra üdvözöljük a felhasználót
     const welcomeMessage = {
-      text: "Üdvözöllek újra! Chatbot vagyok, termek keresesben tudok segiteni! Pl: apple",
+      text: "Üdvözöllek! Egy chatbot vagyok, termékek keresésében tudok segíteni! Írd be a következőt: Kategória",
       isBot: true,
     };
     setMessages([welcomeMessage]);
     saveMessagesToLocalStorage([welcomeMessage]);
+    setCurrentStep(1); // Vissza az alap lépéshez
   };
 
   const handleKeyPress = (e) => {
@@ -173,7 +238,7 @@ const Chatbot = () => {
                 className="px-4 py-2 bg-red-500 text-white rounded"
                 onClick={handleClearMessages}
               >
-                <AiOutlineDelete size={20} /> {/* Kuka ikon */}
+                <AiOutlineDelete size={20} />
               </button>
             </div>
           </div>

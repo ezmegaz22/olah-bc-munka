@@ -62,7 +62,7 @@ const NewAddress = () => {
                     <input
                       className="appearance-none border border-gray-200 bg-gray-100 rounded-md py-2 px-3 hover:border-gray-400 focus:outline-none focus:border-gray-400 w-full"
                       type="text"
-                      placeholder="Type your address"
+                      placeholder=""
                       value={street}
                       onChange={(e) => setStreet(e.target.value)}
                     />
@@ -74,7 +74,7 @@ const NewAddress = () => {
                       <input
                         className="appearance-none border border-gray-200 bg-gray-100 rounded-md py-2 px-3 hover:border-gray-400 focus:outline-none focus:border-gray-400 w-full"
                         type="text"
-                        placeholder="Type your city"
+                        placeholder=""
                         value={city}
                         onChange={(e) => setCity(e.target.value)}
                       />
@@ -85,7 +85,7 @@ const NewAddress = () => {
                       <input
                         className="appearance-none border border-gray-200 bg-gray-100 rounded-md py-2 px-3 hover:border-gray-400 focus:outline-none focus:border-gray-400 w-full"
                         type="text"
-                        placeholder="Type state here"
+                        placeholder=""
                         value={state}
                         onChange={(e) => setState(e.target.value)}
                       />
@@ -98,7 +98,7 @@ const NewAddress = () => {
                       <input
                         className="appearance-none border border-gray-200 bg-gray-100 rounded-md py-2 px-3 hover:border-gray-400 focus:outline-none focus:border-gray-400 w-full"
                         type="number"
-                        placeholder="Type zip code here"
+                        placeholder=""
                         value={zipCode}
                         onChange={(e) => setZipCode(e.target.value)}
                       />
@@ -109,7 +109,7 @@ const NewAddress = () => {
                       <input
                         className="appearance-none border border-gray-200 bg-gray-100 rounded-md py-2 px-3 hover:border-gray-400 focus:outline-none focus:border-gray-400 w-full"
                         type="number"
-                        placeholder="Type phone no here"
+                        placeholder=""
                         value={phoneNo}
                         onChange={(e) => setPhonoNo(e.target.value)}
                       />

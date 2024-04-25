@@ -55,7 +55,7 @@ export const uploadProductImages = async (req, res, next) => {
     return next(new ErrorHandler("Product not found.", 404));
   }
 
-  const uploader = async (path) => await uploads(path, "buyitnow/products");
+  const uploader = async (path) => await uploads(path, "olahbakalar/termekkepek");
 
   const urls = [];
   const files = req.files;
@@ -95,7 +95,7 @@ export const deleteProduct = async (req, res, next) => {
   let product = await Product.findById(req.query.id);
 
   if (!product) {
-    return next(new ErrorHandler("Product not found.", 404));
+    return next(new ErrorHandler("A termék törölve!", 404));
   }
 
   // Deleting images associated with the product

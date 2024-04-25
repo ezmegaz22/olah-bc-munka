@@ -72,15 +72,11 @@ const Cart = () => {
                                 <img src={cartItem.image} alt={cartItem.name} />
                               </div>
                             </div>
-                            <figcaption className="ml-3">
+                            <figcaption className="ml-3 py-5">
                               <p>
                                 <a href="#" className="hover:text-blue-600">
                                   {cartItem.name}
                                 </a>
-                              </p>
-                              <p className="mt-1 text-gray-400">
-                                {" "}
-                                Eladó: {cartItem.seller}
                               </p>
                             </figcaption>
                           </figure>

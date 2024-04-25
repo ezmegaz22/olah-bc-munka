@@ -16,11 +16,11 @@ const Chatbot = () => {
 
   const steps = [
     {
-      text: "Üdvözöllek! Egy chatbot vagyok, termékek keresésében tudok segíteni!",
+      text: "Üdvözöllek! Chatbot vagyok, termékek keresésében tudok segíteni!",
       isBot: true,
     },
     {
-      text: "Írd be a következőt: Kategória ",
+      text: "Írd be a következőt: Kategoria ",
       isBot: true,
     },
   ];
@@ -64,15 +64,15 @@ const Chatbot = () => {
     let responseMessage;
 
     if (currentStep === 1) {
-      if (inputText.toLowerCase().includes("kategória")) {
+      if (inputText.toLowerCase().includes("kategoria")) {
         responseMessage = {
-          text: "Válassz kategóriát: Monitor, Telefon, vagy Laptop!",
+          text: "Válassz kategóriát: Monitor, Fejhallgato, vagy Laptop!",
           isBot: true,
         };
         setCurrentStep(2);
       } else {
         responseMessage = {
-          text: "Ez nem egy érvényes parancs. Kérlek, írd be: Kategória",
+          text: "Ez nem egy érvényes parancs. Kérlek, írd be: Kategoria",
           isBot: true,
         };
       }
@@ -80,17 +80,17 @@ const Chatbot = () => {
       const category = inputText.toLowerCase();
       if (category.includes("monitor")) {
         responseMessage = {
-          text: "Monitor kategória: Acer, Samsung, LG",
+          text: "Monitor kategória: Samsung, Asus",
           isBot: true,
         };
-      } else if (category.includes("telefon")) {
+      } else if (category.includes("fejhallgato")) {
         responseMessage = {
-          text: "Telefon kategória: iPhone, Samsung, Huawei",
+          text: "Fejhallgató kategória: HyperX, Razer, SteelSeries",
           isBot: true,
         };
       } else if (category.includes("laptop")) {
         responseMessage = {
-          text: "Laptop kategória: Dell, HP, Asus",
+          text: "Laptop kategória: Macbook",
           isBot: true,
         };
       } else {
@@ -107,19 +107,34 @@ const Chatbot = () => {
         messages[messages.length - 1].text.includes("kategória")
       ) {
         const selectedBrand = inputText.toLowerCase();
-        if (selectedBrand.includes("dell")) {
+        if (selectedBrand.includes("samsung")) {
           responseMessage = {
-            text: "Dell x2 244 Hz monitor található, 245 euróért, jelenleg 4 db van a raktáron!",
-            isBot: true,
-          };
-        } else if (selectedBrand.includes("hp")) {
-          responseMessage = {
-            text: "HP laptopok: HP Envy, HP Pavilion, HP Spectre",
+            text: "Samsung Odyssey G60 UltraWide Monitor található a weboldalon, 1350€-ért kapható, jelenleg 13 db van raktáron! ",
             isBot: true,
           };
         } else if (selectedBrand.includes("asus")) {
           responseMessage = {
-            text: "Asus laptopok: Asus ZenBook, Asus ROG, Asus VivoBook",
+            text: "Asus TUF VG45 Monitor található a weboldalon, 350€-ért kapható, jelenleg 14 db van raktáron!",
+            isBot: true,
+          };
+        } else if (selectedBrand.includes("hyperx")) {
+          responseMessage = {
+            text: "Hyper Ultra X Fejhallgató található a weboldalon, 85€-ért kapható, jelenleg 15 db van raktáron!",
+            isBot: true,
+          };
+        } else if (selectedBrand.includes("macbook")) {
+          responseMessage = {
+            text: "Macbook PRO 14inch M3 PRO Laptop található a weboldalon, 2850€-ért kapható, jeleneg 24 db van raktáron!",
+            isBot: true,
+          };
+        } else if (selectedBrand.includes("razer")) {
+          responseMessage = {
+            text: "Razer Kraken V20 Fejhallgató található a weboldalon, 95€-ért kapható, jelenleg 17 db van raktáron!",
+            isBot: true,
+          };
+        } else if (selectedBrand.includes("steelseries")) {
+          responseMessage = {
+            text: "Steelseries Arctis 5 Fejhallgató található a weboldalon, 115€-ért kapható, jelenleg 8 db van raktáron!",
             isBot: true,
           };
         } else {
@@ -163,7 +178,7 @@ const Chatbot = () => {
     setMessages([]);
 
     const welcomeMessage = {
-      text: "Üdvözöllek! Egy chatbot vagyok, termékek keresésében tudok segíteni! Írd be a következőt: Kategória",
+      text: "Üdvözöllek! Egy chatbot vagyok, termékek keresésében tudok segíteni! Írd be a következőt: Kategoria",
       isBot: true,
     };
     setMessages([welcomeMessage]);

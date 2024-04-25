@@ -30,7 +30,7 @@ const HomePage = ({ params }) => {
 
   if (!productData) {
     // Itt kezelheted az adatok betöltésének állapotát, pl. loading ikon vagy üzenet
-    return <p>Loading...</p>;
+    return <p>Betöltés...</p>;
   }
 
   return <UpdateProduct data={productData} />;

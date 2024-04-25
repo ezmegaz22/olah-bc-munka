@@ -146,7 +146,7 @@ const Shipping = ({ addresses }) => {
                     <figcaption class="ml-3">
                       <p>{item.name.substring(0, 50)}</p>
                       <p class="mt-1 text-gray-400">
-                        Total: ${item.quantity * item.price}
+                        Ár: €{item.quantity * item.price}
                       </p>
                     </figcaption>
                   </figure>

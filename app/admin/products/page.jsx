@@ -35,7 +35,7 @@ const HomePage = ({ searchParams }) => {
 
   if (!productsData) {
     // betoltes alapot
-    return <p>Loading...</p>;
+    return <p>Betöltés...</p>;
   }
 
   return <Products data={productsData} />;

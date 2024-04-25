@@ -40,7 +40,7 @@ const UpdatePassword = () => {
             <input
               className="appearance-none border border-gray-200 bg-gray-100 rounded-md py-2 px-3 hover:border-gray-400 focus:outline-none focus:border-gray-400 w-full"
               type="password"
-              placeholder="Írd be a jelszavad"
+              placeholder="Írd be a jelenlegi jelszavad!"
               minLength={6}
               required
               value={currentPassword}
@@ -53,7 +53,7 @@ const UpdatePassword = () => {
             <input
               className="appearance-none border border-gray-200 bg-gray-100 rounded-md py-2 px-3 hover:border-gray-400 focus:outline-none focus:border-gray-400 w-full"
               type="password"
-              placeholder="Írd be a jelszavad"
+              placeholder="Írd be a kívánni használt új jelszót!"
               minLength={6}
               required
               value={newPassword}

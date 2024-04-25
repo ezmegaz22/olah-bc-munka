@@ -35,7 +35,7 @@ const ProductDetails = ({ product }) => {
   };
 
   const breadCrumbs = [
-    { name: "Home", url: "/" },
+    { name: "Főoldal", url: "/" },
     {
       name: `${product?.name?.substring(0, 100)} ...`,
       url: `/products/${product?._id}`,
@@ -141,9 +141,7 @@ const ProductDetails = ({ product }) => {
                 </li>
                 <li className="mb-1">
                   {" "}
-                  <b className="font-medium w-36 inline-block">
-                    Eladó / Brand:
-                  </b>
+                  <b className="font-medium w-36 inline-block">Brand:</b>
                   <span className="text-gray-500">{product?.seller}</span>
                 </li>
               </ul>

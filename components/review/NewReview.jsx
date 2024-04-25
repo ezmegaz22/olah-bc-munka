@@ -53,7 +53,7 @@ const NewReview = ({ product }) => {
         <textarea
           rows="4"
           className="appearance-none border border-gray-200 bg-gray-100 rounded-md py-2 px-3 hover:border-gray-400 focus:outline-none focus:border-gray-400 w-1/3"
-          placeholder="Véleményed"
+          placeholder="Írd le a véleményed!"
           name="description"
           value={comment}
           onChange={(e) => setComment(e.target.value)}

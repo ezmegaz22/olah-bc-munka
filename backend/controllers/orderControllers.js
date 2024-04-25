@@ -108,7 +108,7 @@ export const checkoutSession = async (req, res) => {
     //shipping_items
     return {
       price_data: {
-        currency: "usd",
+        currency: "eur",
         product_data: {
           name: item.name,
           images: [item.image],
@@ -116,7 +116,7 @@ export const checkoutSession = async (req, res) => {
         },
         unit_amount: item.price * 100,
       },
-      tax_rates: ["txr_1P4PpgDgFzb6ZjjzXrfIpBQj"], 
+      tax_rates: ["txr_1P7y6f2NTym58lhPX12lWPe9"], 
       quantity: item.quantity,
     };
   });
@@ -133,7 +133,7 @@ export const checkoutSession = async (req, res) => {
     metadata: { shippingInfo },
     shipping_options: [
       {
-        shipping_rate: "shr_1P4PpyDgFzb6ZjjzIHqfxgPJ",
+        shipping_rate: "shr_1P7y622NTym58lhPDVRaEli5",
         
       },
     ],

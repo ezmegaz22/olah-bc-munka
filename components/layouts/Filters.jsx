@@ -62,75 +62,69 @@ const Filters = () => {
   }
 
   return (
-    <aside className="md:w-1/3 lg:w-1/4 px-4">
-      <a
-        className="md:hidden mb-5  w-full text-center px-4 py-2 inline-block text-lg text-gray-700 bg-white shadow-sm border border-gray-200 rounded-md hover:bg-gray-100 hover:text-blue-600"
-        href="#"
-      ></a>
-      <div className="hidden md:block px-6 py-4 border border-gray-200 bg-white rounded shadow-sm">
-        <h3 className="font-semibold mb-2">Ár (€)</h3>
-        <div className="grid md:grid-cols-3 gap-x-2">
-          <div className="mb-4">
-            <input
-              name="min"
-              className="appearance-none border border-gray-200 bg-gray-100 rounded-md py-2 px-3 hover:border-gray-400 focus:outline-none focus:border-gray-400 w-full"
-              type="number"
-              placeholder="Min"
-              value={min}
-              onChange={(e) => setMin(e.target.value)}
-            />
-          </div>
-
-          <div className="mb-4">
-            <input
-              name="max"
-              className="appearance-none border border-gray-200 bg-gray-100 rounded-md py-2 px-3 hover:border-gray-400 focus:outline-none focus:border-gray-400 w-full"
-              type="number"
-              placeholder="Max"
-              value={max}
-              onChange={(e) => setMax(e.target.value)}
-            />
-          </div>
-
-          <div className="mb-4">
-            <button
-              className="px-1 py-2 text-center w-full inline-block text-white bg-blue-600 border border-transparent rounded-md hover:bg-blue-700"
-              onClick={handleButtonClick}
-            >
-              Szűrés
-            </button>
-          </div>
+    <aside className="w-full md:w-1/3 lg:w-1/4 px-4">
+      {/* Ár (€) szűrő */}
+      <div className="bg-white rounded-lg shadow-md mb-6 p-4">
+        <h3 className="text-lg font-semibold mb-3">Ár (€)</h3>
+        <div className="grid grid-cols-2 gap-4">
+          {/* Minimum ár */}
+          <input
+            name="min"
+            className="border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500"
+            type="number"
+            placeholder="Min"
+            value={min}
+            onChange={(e) => setMin(e.target.value)}
+          />
+          {/* Maximum ár */}
+          <input
+            name="max"
+            className="border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500"
+            type="number"
+            placeholder="Max"
+            value={max}
+            onChange={(e) => setMax(e.target.value)}
+          />
         </div>
+        {/* Szűrés gomb */}
+        <button
+          className="mt-4 w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 rounded-md focus:outline-none focus:bg-blue-600"
+          onClick={handleButtonClick}
+        >
+          Szűrés
+        </button>
       </div>
 
-      <div className="hidden md:block px-6 py-4 border border-gray-200 bg-white rounded shadow-sm">
-        <h3 className="font-semibold mb-2">Kategória</h3>
-
-        <ul className="space-y-1">
+      {/* Kategória szűrő */}
+      <div className="bg-white rounded-lg shadow-md mb-6 p-4">
+        <h3 className="text-lg font-semibold mb-3">Kategória</h3>
+        <ul className="space-y-2">
+          {/* Laptop checkbox */}
           <li>
             <label className="flex items-center">
               <input
                 name="category"
                 type="checkbox"
                 value="Laptop"
-                className="h-4 w-4"
+                className="h-4 w-4 mr-2 text-blue-500"
                 defaultChecked={checkHandler("category", "Laptop")}
                 onClick={(e) => handleClick(e.target)}
               />
-              <span className="ml-2 text-gray-500"> Laptop </span>
+              <span className="text-gray-800">Laptop</span>
             </label>
           </li>
+          {/* Fejhallgató checkbox */}
           <li>
             <label className="flex items-center">
               <input
                 name="category"
                 type="checkbox"
                 value="Fejhallgató"
-                className="h-4 w-4"
+                className="h-4 w-4 mr-2 text-blue-500"
                 defaultChecked={checkHandler("category", "Fejhallgató")}
                 onClick={(e) => handleClick(e.target)}
               />
-              <span className="ml-2 text-gray-500"> Fejhallgató </span>
+              <span className="text-gray-800">Fejhallgató</span>
             </label>
           </li>
           <li>
@@ -139,32 +133,33 @@ const Filters = () => {
                 name="category"
                 type="checkbox"
                 value="Monitor"
-                className="h-4 w-4"
+                className="h-4 w-4 mr-2 text-blue-500"
                 defaultChecked={checkHandler("category", "Monitor")}
                 onClick={(e) => handleClick(e.target)}
               />
-              <span className="ml-2 text-gray-500"> Monitor </span>
+              <span className="text-gray-800">Monitor</span>
             </label>
           </li>
         </ul>
+      </div>
 
-        <hr className="my-4" />
-
-        <h3 className="font-semibold mb-2">Értékelés</h3>
-        <ul className="space-y-1">
-          <li>
-            {[5, 4, 3, 2, 1].map((rating) => (
-              <label key={rating} className="flex items-center">
+      {/* Értékelés szűrő */}
+      <div className="bg-white rounded-lg shadow-md p-4">
+        <h3 className="text-lg font-semibold mb-3">Értékelés</h3>
+        <ul className="space-y-2">
+          {/* Csillagok checkbox */}
+          {[5, 4, 3, 2, 1].map((rating) => (
+            <li key={rating}>
+              <label className="flex items-center">
                 <input
                   name="ratings"
                   type="checkbox"
                   value={rating}
-                  className="h-4 w-4"
+                  className="h-4 w-4 mr-2 text-blue-500"
                   defaultChecked={checkHandler("ratings", `${rating}`)}
                   onClick={(e) => handleClick(e.target)}
                 />
-                <span className="ml-2 text-gray-500">
-                  {" "}
+                <span className="text-gray-800">
                   <StarRatings
                     rating={rating}
                     starRatedColor="#ffb829"
@@ -172,11 +167,11 @@ const Filters = () => {
                     starDimension="20px"
                     starSpacing="2px"
                     name="rating"
-                  />{" "}
+                  />
                 </span>
               </label>
-            ))}
-          </li>
+            </li>
+          ))}
         </ul>
       </div>
     </aside>

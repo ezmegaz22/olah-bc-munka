@@ -4,11 +4,11 @@ const nextConfig = {
     appDir: true,
   },
   env: {
-    API_URL: "https://bcmunka01.vercel.app",
-    //API_URL:"http://localhost:3000",
+    //API_URL: "https://bcmunka01.vercel.app",
+    API_URL:"http://localhost:3000",
     //DB_URI: "mongodb://localhost:27017/olahbakalar2",
     DB_URI: "mongodb+srv://olahtest2:olahtest2@olahtest2.faa64qq.mongodb.net/?retryWrites=true&w=majority",
-    NEXTAUTH_URL: "https://bcmunka01.vercel.app", // api url egyformanak kell lennie maskepp nincs authorize (vercel deploy)
+    //NEXTAUTH_URL: "https://bcmunka01.vercel.app", // api url egyformanak kell lennie maskepp nincs authorize (vercel deploy)
 
     CLOUD_NAME: "dgsvedoif",
     CLOUDINARY_API_KEY: "224415584716488",

@@ -67,7 +67,6 @@ const Filters = () => {
       <div className="bg-white rounded-lg shadow-md mb-6 p-4">
         <h3 className="text-lg font-semibold mb-3">Ár (€)</h3>
         <div className="grid grid-cols-2 gap-4">
-          {/* Minimum ár */}
           <input
             name="min"
             className="border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500"
@@ -76,7 +75,6 @@ const Filters = () => {
             value={min}
             onChange={(e) => setMin(e.target.value)}
           />
-          {/* Maximum ár */}
           <input
             name="max"
             className="border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500"
@@ -86,7 +84,6 @@ const Filters = () => {
             onChange={(e) => setMax(e.target.value)}
           />
         </div>
-        {/* Szűrés gomb */}
         <button
           className="mt-4 w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 rounded-md focus:outline-none focus:bg-blue-600"
           onClick={handleButtonClick}
@@ -113,7 +110,6 @@ const Filters = () => {
               <span className="text-gray-800">Laptop</span>
             </label>
           </li>
-          {/* Fejhallgató checkbox */}
           <li>
             <label className="flex items-center">
               <input
@@ -143,11 +139,9 @@ const Filters = () => {
         </ul>
       </div>
 
-      {/* Értékelés szűrő */}
       <div className="bg-white rounded-lg shadow-md p-4">
         <h3 className="text-lg font-semibold mb-3">Értékelés</h3>
         <ul className="space-y-2">
-          {/* Csillagok checkbox */}
           {[5, 4, 3, 2, 1].map((rating) => (
             <li key={rating}>
               <label className="flex items-center">

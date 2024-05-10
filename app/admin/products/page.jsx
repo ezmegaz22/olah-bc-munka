@@ -15,7 +15,7 @@ const getProducts = async (searchParams) => {
     );
     return data;
   } catch (error) {
-    console.error("Error fetching products:", error);
+    console.error("A termék lekérése közben hiba történt!", error);
     return null;
   }
 };

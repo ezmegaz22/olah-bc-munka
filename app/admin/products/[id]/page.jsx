@@ -10,7 +10,7 @@ const getProduct = async (id) => {
     );
     return data;
   } catch (error) {
-    console.error("Error fetching product:", error);
+    console.error("A termék lekérése közben hiba történt!:", error);
     return null;
   }
 };
@@ -29,7 +29,7 @@ const HomePage = ({ params }) => {
   }, [params.id]);
 
   if (!productData) {
-    // Itt kezelheted az adatok betöltésének állapotát, pl. loading ikon vagy üzenet
+    // ha lassu a betöltés akkor megjelenitjuk
     return <p>Betöltés...</p>;
   }
 

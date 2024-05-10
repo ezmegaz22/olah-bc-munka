@@ -13,8 +13,8 @@ const UserAddresses = ({ addresses }) => {
           </div>
           <figcaption className="text-gray-600">
             <p>
-              {address.street} <br /> {address.city}, {address.state},{" "}
-              {address.zipCode}, {address.country}
+              {address.street} <br /> {address.city}, {address.zipCode},{" "}
+              {address.country}
               <br />
               Telefonszám: {address.phoneNo}
             </p>

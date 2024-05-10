@@ -27,6 +27,7 @@ const Page = async ({ searchParams }) => {
 
   return <ListProducts data={productsData} />;
 };
+// kamu data letrehozasa teszt miatt
 // data={{
 //   resPerPage: 1,
 //   productsCount: 1,

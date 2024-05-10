@@ -35,8 +35,7 @@ const OrderItem = ({ order }) => {
           <ul className="text-gray-600">
             <li>{order?.shippingInfo?.street}</li>
             <li>
-              {order?.shippingInfo?.city}, {order?.shippingInfo?.state},{" "}
-              {order?.shippingInfo?.zipCode}
+              {order?.shippingInfo?.city}, {order?.shippingInfo?.zipCode}
             </li>
             <li>{order?.shippingInfo?.country}</li>
           </ul>
@@ -44,8 +43,9 @@ const OrderItem = ({ order }) => {
         <div>
           <p className="text-gray-400 mb-1">Fizetés</p>
           <ul className="text-gray-600">
-            <li className="text-green-400">
-              {order?.paymentInfo?.status?.toUpperCase()}
+            <li className="text-green-400 font-bold">
+              {/*order?.paymentInfo?.status?.toUpperCase()*/}
+              KIFIZETVE
             </li>
             <li>Fizetett adó: €{order?.paymentInfo?.taxPaid}</li>
             <li>Végösszeg: €{order?.paymentInfo?.amountPaid}</li>

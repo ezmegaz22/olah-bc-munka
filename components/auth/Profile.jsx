@@ -14,7 +14,9 @@ const Profile = ({ addresses }) => {
         <div className="relative">
           <img
             className="w-16 h-16 rounded-full mr-4"
-            src={user?.avatar ? user?.avatar?.url : "/images/default.png"}
+            src={
+              user?.avatar ? user?.avatar?.url : "/images/defaultprofilkép.png"
+            }
             alt={user?.name}
           />
         </div>
@@ -33,7 +35,7 @@ const Profile = ({ addresses }) => {
 
       <Link href="/address/new">
         <button className="px-4 py-2 inline-block text-blue-600 border border-gray-300 rounded-md hover:bg-gray-100">
-          <i className="mr-1 fa fa-plus"></i> Uj cím létrehozása
+          <i className="mr-1 fa fa-plus"></i> Új cím létrehozása
         </button>
       </Link>
 

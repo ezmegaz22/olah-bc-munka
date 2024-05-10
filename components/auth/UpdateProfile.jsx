@@ -11,7 +11,9 @@ const UpdateProfile = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [avatar, setAvatar] = useState("");
-  const [avatarPreview, setAvatarPreview] = useState("/images/default.png");
+  const [avatarPreview, setAvatarPreview] = useState(
+    "/images/defaultprofilkép.png"
+  );
 
   useEffect(() => {
     if (user) {
@@ -58,7 +60,7 @@ const UpdateProfile = () => {
       className="mt-1 mb-20 p-4 md:p-7 mx-auto rounded bg-white"
     >
       <form onSubmit={submitHandler}>
-        <h2 className="mb-5 text-2xl font-semibold">Profil beállítás</h2>
+        <h2 className="mb-5 text-2xl font-semibold">Profil beállítása</h2>
 
         <div className="mb-4">
           <label className="block mb-1">Teljes név</label>

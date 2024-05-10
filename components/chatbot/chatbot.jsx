@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import {
   AiOutlineRobot,
   AiOutlineSend,
@@ -7,12 +7,14 @@ import {
 } from "react-icons/ai";
 
 const Chatbot = () => {
+
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([]);
   const [inputText, setInputText] = useState("");
   const [hasOpenedBefore, setHasOpenedBefore] = useState(false);
   const [isMinimized, setIsMinimized] = useState(false);
   const [currentStep, setCurrentStep] = useState(0);
+  const [productUrl, setProductUrl] = useState('');
 
   const steps = [
     {
@@ -25,6 +27,7 @@ const Chatbot = () => {
     },
   ];
 
+  // chat nyitása
   const handleOpenChat = () => {
     setIsOpen(true);
     if (!hasOpenedBefore) {
@@ -35,6 +38,7 @@ const Chatbot = () => {
     }
   };
 
+  // mentett üzenetek betöltése
   useEffect(() => {
     const storedMessages = localStorage.getItem("chatMessages");
     if (storedMessages) {
@@ -42,28 +46,27 @@ const Chatbot = () => {
     }
   }, []);
 
+  // üzenetek mentése
   const saveMessagesToLocalStorage = (messagesToSave) => {
     localStorage.setItem("chatMessages", JSON.stringify(messagesToSave));
   };
 
+  // üzenet küldése
   const handleSendMessage = () => {
     if (inputText.trim() === "") {
       return;
     }
-
+  
     const newMessage = {
       text: inputText,
       isBot: false,
     };
-    const updatedMessages = [...messages, newMessage];
-    setMessages(updatedMessages);
-    saveMessagesToLocalStorage(updatedMessages);
-
-    setInputText("");
-
+  
     let responseMessage;
-
+  
+    // chat lépések szerinti válaszok
     if (currentStep === 1) {
+      // Lépés 1: Kategória választás
       if (inputText.toLowerCase().includes("kategoria")) {
         responseMessage = {
           text: "Válassz kategóriát: Monitor, Fejhallgato, vagy Laptop!",
@@ -77,6 +80,7 @@ const Chatbot = () => {
         };
       }
     } else if (currentStep === 2) {
+      // Lépés 2: Kategória választás után
       const category = inputText.toLowerCase();
       if (category.includes("monitor")) {
         responseMessage = {
@@ -99,9 +103,9 @@ const Chatbot = () => {
           isBot: true,
         };
       }
-      setCurrentStep(3); // Kategóriaválasztás után a következő lépés
+      setCurrentStep(3);
     } else if (currentStep === 3) {
-      // Ellenőrizzük, hogy a felhasználó választott-e már kategóriát
+      // Lépés 3: Kategória választás után
       if (
         messages[messages.length - 1].isBot &&
         messages[messages.length - 1].text.includes("kategória")
@@ -109,33 +113,39 @@ const Chatbot = () => {
         const selectedBrand = inputText.toLowerCase();
         if (selectedBrand.includes("samsung")) {
           responseMessage = {
-            text: "Samsung Odyssey G60 UltraWide Monitor található a weboldalon, 1350€-ért kapható, jelenleg 13 db van raktáron! ",
+            text: "Samsung Odyssey G60 UltraWide Monitor található a weboldalon, 1350€-ért kapható, jelenleg 13 db van raktáron! Gyors megtalálás érdekében kattints a KATT szó-ra! ",
             isBot: true,
+            productUrl: "http://localhost:3000/product/662932b3f6cbea588c17e59f",
           };
         } else if (selectedBrand.includes("asus")) {
           responseMessage = {
-            text: "Asus TUF VG45 Monitor található a weboldalon, 350€-ért kapható, jelenleg 14 db van raktáron!",
+            text: "Asus TUF VG45 Monitor található a weboldalon, 350€-ért kapható, jelenleg 14 db van raktáron! Gyors megtalálás érdekében kattints a KATT szó-ra! ",
             isBot: true,
+            productUrl: "http://localhost:3000/product/662933dbf6cbea588c17e874",
           };
         } else if (selectedBrand.includes("hyperx")) {
           responseMessage = {
-            text: "Hyper Ultra X Fejhallgató található a weboldalon, 85€-ért kapható, jelenleg 15 db van raktáron!",
+            text: "Hyper Ultra X Fejhallgató található a weboldalon, 85€-ért kapható, jelenleg 15 db van raktáron! Gyors megtalálás érdekében kattints a KATT szó-ra! ",
             isBot: true,
+            productUrl: "http://localhost:3000/product/6629326cf6cbea588c17e4d7",
           };
         } else if (selectedBrand.includes("macbook")) {
           responseMessage = {
-            text: "Macbook PRO 14inch M3 PRO Laptop található a weboldalon, 2850€-ért kapható, jeleneg 24 db van raktáron!",
+            text: "Macbook PRO 14inch M3 PRO Laptop található a weboldalon, 2850€-ért kapható, jeleneg 24 db van raktáron! Gyors megtalálás érdekében kattints a KATT szó-ra! ",
             isBot: true,
+            productUrl: "http://localhost:3000/product/662933b0f6cbea588c17e801",
           };
         } else if (selectedBrand.includes("razer")) {
           responseMessage = {
-            text: "Razer Kraken V20 Fejhallgató található a weboldalon, 95€-ért kapható, jelenleg 17 db van raktáron!",
+            text: "Razer Kraken V20 Fejhallgató található a weboldalon, 95€-ért kapható, jelenleg 17 db van raktáron! Gyors megtalálás érdekében kattints a KATT szó-ra! ",
             isBot: true,
+            productUrl: "http://localhost:3000/product/66293342f6cbea588c17e774",
           };
         } else if (selectedBrand.includes("steelseries")) {
           responseMessage = {
-            text: "Steelseries Arctis 5 Fejhallgató található a weboldalon, 115€-ért kapható, jelenleg 8 db van raktáron!",
+            text: "Steelseries Arctis 5 Fejhallgató található a weboldalon, 115€-ért kapható, jelenleg 8 db van raktáron! Gyors megtalálás érdekében kattints a KATT szó-ra! ",
             isBot: true,
+            productUrl: "http://localhost:3000/product/66293405f6cbea588c17e8f8",
           };
         } else {
           responseMessage = {
@@ -149,17 +159,28 @@ const Chatbot = () => {
           isBot: true,
         };
       }
+      setCurrentStep(4);
+    } else if (currentStep === 4) {
+      // Utolsó lépés után
+      responseMessage = {
+        text: "Ha további segítségre lenne szükséged, kérlek töröld az üzeneteket!",
+        isBot: true,
+      };
     } else {
       responseMessage = {
         text: "Kérlek, használd a chatbotot a fenti utasítások szerint.",
         isBot: true,
       };
     }
-
-    setMessages([...updatedMessages, responseMessage]);
-    saveMessagesToLocalStorage([...updatedMessages, responseMessage]);
+  
+    const updatedMessages = [...messages, newMessage, responseMessage];
+    setMessages(updatedMessages);
+    saveMessagesToLocalStorage(updatedMessages);
+  
+    setInputText("");
   };
 
+  // chat ablak bezárása
   const handleCloseChat = () => {
     if (!isMinimized) {
       localStorage.removeItem("chatMessages");
@@ -168,24 +189,27 @@ const Chatbot = () => {
     setIsOpen(false);
   };
 
+  // chat ablak minimalizálása
   const handleMinimizeChat = () => {
     setIsMinimized(true);
     setIsOpen(false);
   };
 
+  // üzenetek törlése
   const handleClearMessages = () => {
     localStorage.removeItem("chatMessages");
     setMessages([]);
 
     const welcomeMessage = {
-      text: "Üdvözöllek! Egy chatbot vagyok, termékek keresésében tudok segíteni! Írd be a következőt: Kategoria",
+      text: "Üdvözöllek! Chatbot vagyok, termékek keresésében tudok segíteni! Írd be a következőt: Kategoria",
       isBot: true,
     };
     setMessages([welcomeMessage]);
     saveMessagesToLocalStorage([welcomeMessage]);
-    setCurrentStep(1); // Vissza az alap lépéshez
+    setCurrentStep(1);
   };
 
+  // Enter lenyomása
   const handleKeyPress = (e) => {
     if (e.key === "Enter") {
       handleSendMessage();
@@ -216,21 +240,23 @@ const Chatbot = () => {
             </div>
             <div className="flex-1 p-4 overflow-y-auto">
               {messages.map((message, index) => (
-                <div
-                  key={index}
-                  className={`${
-                    message.isBot ? "text-left" : "text-right"
-                  } mb-2`}
-                >
-                  <div
-                    className={`${
-                      message.isBot
-                        ? "bg-gray-200 rounded-lg p-2"
-                        : "bg-blue-500 text-white rounded-lg p-2"
-                    }`}
-                  >
-                    {message.text}
-                  </div>
+                <div key={index} className="mb-2">
+                  {message.isBot ? (
+                    <div className="flex justify-start mb-2">
+                      <div className="bg-gray-200 rounded-lg p-2">
+                        {message.text}
+                        {message.productUrl && (
+                          <a href={message.productUrl} target="_blank" rel="noopener noreferrer" className="text-blue-500 ml-1 underline">KATT</a>
+                        )}
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="flex justify-end mb-2">
+                      <div className="bg-blue-500 text-white rounded-lg p-2">
+                        {message.text}
+                      </div>
+                    </div>
+                  )}
                 </div>
               ))}
             </div>

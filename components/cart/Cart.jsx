@@ -9,7 +9,7 @@ const Cart = () => {
   const { addItemToCart, deleteItemFromCart, cart, saveOnCheckout } =
     useContext(CartContext);
 
-  const increaseQty = (cartItem) => {
+  const increaseQuantity = (cartItem) => {
     const newQty = cartItem?.quantity + 1;
     const item = { ...cartItem, quantity: newQty };
 
@@ -18,7 +18,7 @@ const Cart = () => {
     addItemToCart(item);
   };
 
-  const decreaseQty = (cartItem) => {
+  const decreaseQuantity = (cartItem) => {
     const newQty = cartItem?.quantity - 1;
     const item = { ...cartItem, quantity: newQty };
 
@@ -36,7 +36,7 @@ const Cart = () => {
 
   const totalAmount = (Number(amountWithoutTax) + Number(taxAmount)).toFixed(2);
 
-  const checkoutHandler = () => {
+  const checkoutButton = () => {
     const data = {
       amount: amountWithoutTax,
       tax: taxAmount,
@@ -86,7 +86,7 @@ const Cart = () => {
                             <button
                               data-action="decrement"
                               className=" bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-l cursor-pointer outline-none"
-                              onClick={() => decreaseQty(cartItem)}
+                              onClick={() => decreaseQuantity(cartItem)}
                             >
                               <span className="m-auto text-2xl font-thin">
                                 −
@@ -102,7 +102,7 @@ const Cart = () => {
                             <button
                               data-action="increment"
                               className="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-r cursor-pointer"
-                              onClick={() => increaseQty(cartItem)}
+                              onClick={() => increaseQuantity(cartItem)}
                             >
                               <span className="m-auto text-2xl font-thin">
                                 +
@@ -169,7 +169,7 @@ const Cart = () => {
 
                   <a
                     className="px-4 py-3 mb-2 inline-block text-lg w-full text-center font-medium text-white bg-green-600 border border-transparent rounded-md hover:bg-green-700 cursor-pointer"
-                    onClick={checkoutHandler}
+                    onClick={checkoutButton}
                   >
                     Tovább
                   </a>

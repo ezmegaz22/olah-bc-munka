@@ -12,7 +12,7 @@ const Reviews = ({ reviews }) => {
               src={
                 review?.user?.avatar
                   ? review?.user?.avatar?.url[0]
-                  : "/images/default.png"
+                  : "/images/defaultprofilkép.png"
               }
               alt="user"
             />

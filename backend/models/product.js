@@ -3,15 +3,15 @@ import mongoose from "mongoose";
 const productSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: [true, "Please enter product name"],
+    required: [true, "Kérlek, add meg a termék nevét!"],
   },
   description: {
     type: String,
-    required: [true, "Please enter product description"],
+    required: [true, "Kérlek, add meg a termék leírását!"],
   },
   price: {
     type: Number,
-    required: [true, "Please enter product price"],
+    required: [true, "Kérlek, add meg a termék árát!"],
   },
   images: [
     {
@@ -26,19 +26,19 @@ const productSchema = new mongoose.Schema({
 
   category: {
     type: String,
-    required: [true, "Please enter product category"],
+    required: [true, "Kérlek, add meg a termék kategóriáját!"],
     enum: {
       values: ["Laptop", "Fejhallgató", "Monitor"], //
-      message: "Please select correct category",
+      message: "Kérlek, válaszd ki a megfelelő kategóriát!",
     },
   },
   seller: {
     type: String,
-    required: [true, "Please enter product seller"],
+    required: [true, "Kérlek, add meg a termék brandjét!"],
   },
   stock: {
     type: Number,
-    required: [true, "Please enter product stock"],
+    required: [true, "Kérlek, add meg a termék raktár készletét!"],
   },
   ratings: {
     type: Number,

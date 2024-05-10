@@ -9,6 +9,7 @@ const getAddresses = async () => {
   const nextCookies = cookies();
   const cookieName = getCookieName();
   const nextAuthSessionToken = nextCookies.get(cookieName);
+  
   console.log("sessiontoken", nextAuthSessionToken);
   console.log("api_url", process.env.API_URL);
 

@@ -40,7 +40,7 @@ export const getProduct = async (req, res, next) => {
   const product = await Product.findById(req.query.id);
 
   if (!product) {
-    return next(new ErrorHandler("Product not found.", 404));
+    return next(new ErrorHandler("A termék nem található!", 404));
   }
 
   res.status(200).json({
@@ -52,7 +52,7 @@ export const uploadProductImages = async (req, res, next) => {
   let product = await Product.findById(req.query.id);
 
   if (!product) {
-    return next(new ErrorHandler("Product not found.", 404));
+    return next(new ErrorHandler("A termék nem található!", 404));
   }
 
   const uploader = async (path) => await uploads(path, "olahbakalar/termekkepek");
@@ -81,7 +81,7 @@ export const updateProduct = async (req, res, next) => {
   let product = await Product.findById(req.query.id);
 
   if (!product) {
-    return next(new ErrorHandler("Product not found.", 404));
+    return next(new ErrorHandler("A termék nem található!", 404));
   }
 
   product = await Product.findByIdAndUpdate(req.query.id, req.body);
@@ -95,7 +95,7 @@ export const deleteProduct = async (req, res, next) => {
   let product = await Product.findById(req.query.id);
 
   if (!product) {
-    return next(new ErrorHandler("A termék törölve!", 404));
+    return next(new ErrorHandler("A termék nem található!", 404));
   }
 
   // Deleting images associated with the product
@@ -124,7 +124,7 @@ export const createProductReview = async (req, res, next) => {
   let product = await Product.findById(productId);
 
   if (!product) {
-    return next(new ErrorHandler("Product not found.", 404));
+    return next(new ErrorHandler("A termék nem található!", 404));
   }
 
   const isReviewed = product?.reviews?.find(

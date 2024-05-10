@@ -28,7 +28,7 @@ const Orders = ({ orders }) => {
         <thead className="text-l text-gray-700 uppercase">
           <tr>
             <th scope="col" className="px-6 py-3">
-              ID
+              Azonosító
             </th>
             <th scope="col" className="px-6 py-3">
               Kifizetett összeg

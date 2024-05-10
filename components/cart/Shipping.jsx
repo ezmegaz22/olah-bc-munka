@@ -20,7 +20,6 @@ const Shipping = ({ addresses }) => {
     if (!shippingInfo) {
       return toast.error("Kérlek válasz szállítási címet!");
     }
-    // move to stripe checkoutpage
     try {
       const { data } = await axios.post(
         `${process.env.API_URL}/api/orders/checkout_session`,
@@ -29,7 +28,7 @@ const Shipping = ({ addresses }) => {
           shippingInfo,
         }
       );
-
+      
       window.location.href = data.url;
     } catch (error) {
       console.log(error.response);
@@ -70,7 +69,7 @@ const Shipping = ({ addresses }) => {
                       <p class="ml-2">
                         <span>{address.street}</span>
                         <small class="block text-sm text-gray-400">
-                          {address.city}, {address.state}, {address.zipCode}
+                          {address.city}, {address.zipCode}
                           <br />
                           {address.country}
                           <br />

@@ -4,17 +4,17 @@ import bcrypt from "bcryptjs";
 const userSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: [true, "Please enter your name"],
+    required: [true, "Kérlek, ird be a neved!"],
   },
   email: {
     type: String,
-    required: [true, "Please enter your email"],
+    required: [true, "Kérlek, ird be az email címed!"],
     unique: true,
   },
   password: {
     type: String,
-    required: [true, "Please enter your password"],
-    minLength: [6, "Your password must be longer than 6 characters"],
+    required: [true, "Kérlek, adj meg egy jelszót!"],
+    minLength: [6, "A jelszavadnak hosszabbnak kell lennie, mint 6 karakter!"],
     select: false,
   },
   avatar: {

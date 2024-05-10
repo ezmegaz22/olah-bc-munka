@@ -28,7 +28,7 @@ export const getOrder = async (req, res) => {
   );
 
   if (!order) {
-    return next(new ErrorHandler("No Order found with this ID", 404));
+    return next(new ErrorHandler("Nem található rendelés a megadott ID-val!", 404));
   }
 
   res.status(200).json({
@@ -59,7 +59,7 @@ export const updateOrder = async (req, res) => {
   let order = await Order.findById(req.query.id);
 
   if (!order) {
-    return next(new ErrorHandler("No Order found with this ID", 404));
+    return next(new ErrorHandler("Nem található rendelés a megadott ID-val!", 404));
   }
 
   order = await Order.findByIdAndUpdate(req.query.id, {
@@ -76,7 +76,7 @@ export const deleteOrder = async (req, res) => {
   let order = await Order.findById(req.query.id);
 
   if (!order) {
-    return next(new ErrorHandler("No Order found with this ID", 404));
+    return next(new ErrorHandler("Nem található rendelés a megadott ID-val!", 404));
   }
 
   await order.deleteOne();
@@ -105,7 +105,7 @@ export const checkoutSession = async (req, res) => {
   const body = req.body;
 
   const line_items = body?.items?.map((item) => {
-    //shipping_items
+    //szallitasi termekek
     return {
       price_data: {
         currency: "eur",

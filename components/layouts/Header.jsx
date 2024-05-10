@@ -62,7 +62,9 @@ const Header = () => {
                   <img
                     className="w-10 h-10 rounded-full"
                     src={
-                      user?.avatar ? user?.avatar?.url : "/images/default.png"
+                      user?.avatar
+                        ? user?.avatar?.url
+                        : "/images/defaultprofilkép.png"
                     }
                   />
                   <div className="space-y-1 font-medium">

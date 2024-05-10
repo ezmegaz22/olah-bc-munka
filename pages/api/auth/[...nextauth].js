@@ -21,14 +21,14 @@ export default async function auth(req, res) {
           const user = await User.findOne({ email }).select("+password");
 
           if (!user) {
-            throw new Error("Helytelen email cím, vagy jelszó!");
+            throw new Error("Nem sikerült azonosítani a felhasználót. Kérjük, ellenőrizze az e-mail címét és a jelszót!");
           }
           const isPasswordMatched = await bcrypt.compare(
             password,
             user.password
           );
           if (!isPasswordMatched) {
-            throw new Error("Helytelen email cím, vagy jelszó!");
+            throw new Error("Nem sikerült azonosítani a felhasználót. Kérjük, ellenőrizze az e-mail címét és a jelszót!");
           }
           return user;
         },
@@ -39,7 +39,7 @@ export default async function auth(req, res) {
         user && (token.user = user);
 
         if (req.url === "/api/auth/session?update") {
-          // hit the db and eturn the updated user
+         
 
           const updatedUser = await User.findById(token.user._id);
           token.user = updatedUser;
@@ -50,7 +50,7 @@ export default async function auth(req, res) {
       session: async ({ session, token }) => {
         session.user = token.user;
 
-        // delete password from session
+        // toroljuk a sessionbol a jelszót ne lassak a felhasznalok
         delete session?.user?.password;
 
         return session;
